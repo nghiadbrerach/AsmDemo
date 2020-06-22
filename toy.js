@@ -23,10 +23,10 @@ router.post('/insert', async (req, res) => {
     let name = req.body.ToyName;
     let type = req.body.type;
     let price = req.body.price;
-    let newtoy = {
+    let newtoy = {$set : {
         ToyName: name,
         type: type,
-        price: price,
+        price: price}
     };
     await dbo.collection("product").insertOne(newtoy);
 
@@ -49,20 +49,16 @@ router.get('/edit', async(req,res)=>{
 ///---------------------------Post edit infomation-----------------------------
 router.post('/edit', async(req,res)=>{
     let id = req.body.id;
-    let name = req.body.ToyName;
+    let name = req.body.name;
     let type = req.body.type;
     let price = req.body.price;
-    let newtoy = {
-        ToyName: name,
-        type: type,
-        price: price,
-    };
-    var ObjectID = require("mongodb").ObjectID;
+    let newValues ={$set : {ToyName: name,type:type,price:price}};
+    var ObjectID = require('mongodb').ObjectID;
     let condition = {"_id" : ObjectID(id)};
     
     let client= await MongoClient.connect(url);
     let dbo = client.db("toystore");
-    await dbo.collection("product").updatetOne(condition,newtoy);
+    await dbo.collection("product").updateOne(condition,newValues);
     //
     let results = await dbo.collection("product").find({}).toArray();
     res.render('allToy',{toy:results});
