@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>toy-store-edit </title>
+    <style>
+        body {
+            background-image: url("https://wallpapercart.com/wp-content/uploads/2019/05/Movie-Toy-Story-4-Woody-Buzz-Lightyear-Carnival-Ferris-Wheel-Sunset-Hat-Toy-Sun-HD-Wallpaper-Background-Image.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        header {
+
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        article {
+            float: center;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+
+        }
+
+        nav {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>EDIT TOY INFORMATION</h1>
+    </header>
+    <article>
+        <table width = 100% border="1" style="color:White;" >
+            <form action="edit" method="POST">
+                <tr>
+                    <input type="hidden" name="id" value="{{product._id}}">
+                   <tr> 
+                    <td>Name of toy :</td>
+                   
+                    <td><input type="text" id="" name="ToyName" value="{{toy.ToyName}}"></td>
+                    </tr>
+                    <tr>
+                    <td>Type :</td>
+                    
+                    <td><input type="text" name="type" id="" value="{{toy.type}}"></td>
+                    </tr>
+                    <tr>
+                    <td>Price : </td>
+                    
+                    <td> <input type="text" name="price" id="" value="{{toy.price}}"></td>
+                    </tr>
+                    <td><input type="submit" value="Update"></td>
+                </tr>
+                
+            </form>
+        </table>
+    </article>
+    <nav>
+        <h2>CONTACT US : GREENWICH UNIVERSITY</h2>
+    </nav>
+</body>
+
+</html>
