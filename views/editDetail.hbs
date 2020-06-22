@@ -33,12 +33,12 @@
         }
 
         nav {
-    float: left;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    color: white;
-}
+            float: left;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
     </style>
 </head>
 
@@ -47,28 +47,28 @@
         <h1>EDIT TOY INFORMATION</h1>
     </header>
     <article>
-        <table width=100% >
-    <form action="edit" method="POST">
-    <input type="hidden" name="id" value="{{toy._id}}">
-    <tr>
+        <table width=100%>
+            <form action="edit" method="POST">
+                <input type="hidden" name="id" value="{{toy._id}}">
+                <tr>
 
-  
-    <td> Name :<input type="text" name="name" value="{{toy.ToyName}}"></td>
-    </tr>
-    <br>
-    <tr>
-         
-       <td> Type :<input type="text" name="type" id="" value="{{toy.type}}"></td>
-    </tr>
-    <br>
-    <tr>
-     
-    
-   <td>Price : <input type="text" name="price" id="" value="{{toy.price}}"></td>
-    </tr>
-    <td><input type="submit" value="Update"></td>
-    </form> 
-    </table>
+
+                    <td> Name :<input type="text" name="name" value="{{toy.ToyName}}"></td>
+                </tr>
+                <br>
+                <tr>
+
+                    <td> Type :<input type="text" name="type" id="" value="{{toy.type}}"></td>
+                </tr>
+                <br>
+                <tr>
+
+
+                    <td>Price : <input type="text" name="price" id="" value="{{toy.price}}"></td>
+                </tr>
+                <td><input type="submit" value="Update"></td>
+            </form>
+        </table>
     </article>
     <nav>
         <h2>CONTACT US : GREENWICH UNIVERSITY</h2>

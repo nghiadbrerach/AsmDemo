@@ -23,10 +23,12 @@ router.post('/insert', async (req, res) => {
     let name = req.body.ToyName;
     let type = req.body.type;
     let price = req.body.price;
-    let newtoy = {$set : {
-        ToyName: name,
-        type: type,
-        price: price}
+    let newtoy = {
+        
+            ToyName: name,
+            type: type,
+            price: price,
+        
     };
     await dbo.collection("product").insertOne(newtoy);
 
@@ -36,32 +38,32 @@ router.post('/insert', async (req, res) => {
 
 
 /// --------------------------Edit Toy-----------------------------------------
-router.get('/edit', async(req,res)=>{
+router.get('/edit', async (req, res) => {
     let id = req.query.id;
     var ObjectID = require('mongodb').ObjectID;
 
-    let client= await MongoClient.connect(url);
+    let client = await MongoClient.connect(url);
     let dbo = client.db("toystore");
-    let result = await dbo.collection("product").findOne({"_id" : ObjectID(id)});
-    res.render('editDetail',{toy:result});
+    let result = await dbo.collection("product").findOne({ "_id": ObjectID(id) });
+    res.render('editDetail', { toy: result });
 
 })
 ///---------------------------Post edit infomation-----------------------------
-router.post('/edit', async(req,res)=>{
+router.post('/edit', async (req, res) => {
     let id = req.body.id;
     let name = req.body.name;
     let type = req.body.type;
     let price = req.body.price;
-    let newValues ={$set : {ToyName: name,type:type,price:price}};
+    let newValues = { $set: { ToyName: name, type: type, price: price } };
     var ObjectID = require('mongodb').ObjectID;
-    let condition = {"_id" : ObjectID(id)};
-    
-    let client= await MongoClient.connect(url);
+    let condition = { "_id": ObjectID(id) };
+
+    let client = await MongoClient.connect(url);
     let dbo = client.db("toystore");
-    await dbo.collection("product").updateOne(condition,newValues);
+    await dbo.collection("product").updateOne(condition, newValues);
     //
     let results = await dbo.collection("product").find({}).toArray();
-    res.render('allToy',{toy:results});
+    res.render('allToy', { toy: results });
 })
 
 ///------------------------------------Delete Toy------------------------------------
@@ -95,4 +97,4 @@ router.post('/search', async (req, res) => {
     res.render('allToy', { toy: results });
 })
 
-module. exports = router;
+module.exports = router;
