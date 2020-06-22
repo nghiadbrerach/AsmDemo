@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     let client = await MongoClient.connect(url);
     let dbo = client.db("toystore");
     let results = await dbo.collection("product").find({}).toArray();
-    res.render('alltoy', { toy: results });
+    res.render('allToy', { toy: results });
 })
 
 ///---------------------------Insert Toy---------------------------------------
