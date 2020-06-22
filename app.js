@@ -7,16 +7,16 @@ var port = process.env.PORT || 3000;
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
-var publicDir = require('path').join(__dirname,'/public');
+var publicDir = require('path').join(__dirname, '/public');
 app.use(express.static(publicDir));
 
 //npm i handlebars consolidate --save
-app.engine('hbs',engines.handlebars);
-app.set('views','./views');
-app.set('view engine','hbs');
+app.engine('hbs', engines.handlebars);
+app.set('views', './views');
+app.set('view engine', 'hbs');
 
 var toyController = require('./toy.js');
-app.use('/toy',toyController);
+app.use('/toy', toyController);
 const { Server } = require('http');
 
-var server = app.listen(port, function () {});
+var server = app.listen(port, function () { });
