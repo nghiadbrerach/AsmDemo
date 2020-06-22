@@ -33,7 +33,7 @@ router.post('/insert', async (req, res) => {
     await dbo.collection("product").insertOne(newtoy);
 
     let results = await dbo.collection("product").find({}).toArray();
-    res.render('alltoy', { toy: results });
+    res.render('allToy', { toy: results });
 })
 
 
