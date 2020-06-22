@@ -16,7 +16,7 @@ app.set('views', './views');
 app.set('view engine', 'hbs');
 
 var toyController = require('./toy.js');
-app.use('/toy', toyController);
+app.use('/', toyController);
 const { Server } = require('http');
 
 var server = app.listen(port, function () { });
