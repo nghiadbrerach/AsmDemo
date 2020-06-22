@@ -1,7 +1,7 @@
 const express = require('express');
 const engines = require('consolidate');
 const app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 2000;
 
 
 var bodyParser = require("body-parser");
@@ -19,4 +19,4 @@ var toyController = require('./toy.js');
 app.use('/', toyController);
 const { Server } = require('http');
 
-var server = app.listen(port, function () { });
+app.listen(port, function () { });
