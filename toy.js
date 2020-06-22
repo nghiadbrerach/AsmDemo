@@ -23,6 +23,9 @@ router.post('/insert', async (req, res) => {
     let name = req.body.ToyName;
     let type = req.body.type;
     let price = req.body.price;
+    if(price > 200){
+        res.render('insertToy', {error: "Price must be < 200"});
+    }
     let newtoy = {
         
             ToyName: name,
@@ -54,9 +57,14 @@ router.post('/edit', async (req, res) => {
     let name = req.body.name;
     let type = req.body.type;
     let price = req.body.price;
+    if(price > 200){
+        res.render('editDetail', {error: "Price must be < 200"});
+    }
     let newValues = { $set: { ToyName: name, type: type, price: price } };
     var ObjectID = require('mongodb').ObjectID;
     let condition = { "_id": ObjectID(id) };
+    
+     
 
     let client = await MongoClient.connect(url);
     let dbo = client.db("toystore");
@@ -74,7 +82,7 @@ router.get("/delete", async (req, res) => {
     var ObjectID = require("mongodb").ObjectID;
     let condition = { "_id": ObjectID(id) };
 
-    let client = await MongoClient.connect(url);
+    let client = MongoClient.connect(url);
     let dbo = client.db("toystore");
     await dbo.collection("product").deleteOne(condition);
 
@@ -96,5 +104,6 @@ router.post('/search', async (req, res) => {
     let results = await dbo.collection("product").find({ "ToyName": searchtoy }).toArray();
     res.render('allToy', { toy: results });
 })
+//--------------------------------Limit PRICE----------------------------
 
 module.exports = router;
